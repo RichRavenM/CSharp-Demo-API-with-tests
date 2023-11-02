@@ -1,6 +1,6 @@
 namespace CloudCustomers.API;
 
-public class WeatherForecast
+public class Users
 {
     public DateOnly Date { get; set; }
 
