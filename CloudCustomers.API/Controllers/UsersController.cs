@@ -1,4 +1,5 @@
 using CloudCustomers.API.Services;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CloudCustomers.API.Controllers;
@@ -23,7 +24,11 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> Get()
     {
         var users = await _usersService.GetAllUsers();
-        Console.WriteLine(users);
-        return Ok(users);
+
+        if (users.Any())
+            return Ok(users);
+
+        return NotFound();
+
     }
 }
